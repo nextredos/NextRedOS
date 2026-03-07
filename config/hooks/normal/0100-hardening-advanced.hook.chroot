@@ -1,0 +1,32 @@
+#!/bin/bash
+set -e
+
+# ClamAV — aggiorna database firme
+systemctl enable clamav-freshclam
+systemctl enable clamav-daemon
+
+# Firejail — abilita profili
+firejail --profile=/etc/firejail/firefox.profile 2>/dev/null || true
+
+# Tor — abilita servizio
+systemctl enable tor
+
+# Configura proxychains
+cat > /etc/proxychains4.conf << EOF
+strict_chain
+proxy_dns
+remote_dns_subnet 224
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+
+[ProxyList]
+socks5 127.0.0.1 9050
+EOF
+
+# Configura snort
+if [ -f /etc/snort/snort.conf ]; then
+    sed -i 's/ipvar HOME_NET any/ipvar HOME_NET 192.168.0.0\/16/' /etc/snort/snort.conf
+fi
+
+# AIDE — inizializza database
+aideinit 2>/dev/null || true

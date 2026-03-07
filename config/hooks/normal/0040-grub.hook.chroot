@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+# Installa grub
+apt-get install -y grub-common grub2-common
+
+# Personalizza titolo GRUB
+if [ -f /etc/grub.d/10_linux ]; then
+    sed -i 's/Debian GNU\/Linux/NextRedOS/g' /etc/grub.d/10_linux
+fi
+
+if [ -f /etc/default/grub ]; then
+    sed -i 's/GRUB_DISTRIBUTOR=.*/GRUB_DISTRIBUTOR="NextRedOS"/' /etc/default/grub
+else
+    echo 'GRUB_DISTRIBUTOR="NextRedOS"' >> /etc/default/grub
+fi

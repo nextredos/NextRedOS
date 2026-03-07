@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+# Installa temi
+apt-get install -y --no-install-recommends mate-themes papirus-icon-theme
+
+# Compila database dconf
+dconf update
+
+# Configura LightDM
+cat > /etc/lightdm/lightdm-gtk-greeter.conf << EOF
+[greeter]
+background=/usr/share/backgrounds/NextRedOS/wallpaper.png
+theme-name=BlackMATE
+icon-theme-name=Papirus-Dark
+EOF

@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+# Abilita Docker
+systemctl enable docker
+
+# Aggiungi utente admin al gruppo docker
+usermod -aG docker admin 2>/dev/null || true
+
+# Aggiungi alias docker al bashrc
+cat >> /etc/skel/.bashrc << EOF
+
+# Alias Home Assistant
+alias hastart='cd ~/homeassistant && docker compose up -d'
+alias hastop='cd ~/homeassistant && docker compose down'
+alias halogs='cd ~/homeassistant && docker compose logs -f'
+alias hastatus='docker ps | grep homeassistant'
+alias haupdate='cd ~/homeassistant && docker compose pull && docker compose up -d'
+EOF

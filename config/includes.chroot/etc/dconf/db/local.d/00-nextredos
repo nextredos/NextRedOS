@@ -1,0 +1,12 @@
+[org/mate/desktop/interface]
+gtk-theme='BlackMATE'
+icon-theme='Papirus-Dark'
+
+[org/mate/desktop/background]
+picture-filename='/usr/share/backgrounds/NextRedOS/wallpaper.png'
+picture-options='zoom'
+primary-color='#1a0000'
+color-shading-type='solid'
+
+[org/mate/marco/general]
+theme='BlackMATE'

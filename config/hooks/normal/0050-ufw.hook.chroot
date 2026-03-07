@@ -1,0 +1,10 @@
+
+#!/bin/bash
+set -e
+ufw default deny incoming
+ufw default deny outgoing
+ufw allow out 80/tcp
+ufw allow out 443/tcp
+ufw allow out 53/udp
+ufw enable
+systemctl enable ufw

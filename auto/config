@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+lb config noauto \
+    --distribution trixie \
+    --archive-areas "main contrib non-free non-free-firmware" \
+    --debian-installer live \
+    --debian-installer-gui false \
+    --memtest none \
+    --bootappend-live "boot=live quiet splash apparmor=1 security=apparmor username=admin user-fullname=NextRedOS hostname=nextredos locales=it_IT.UTF-8 keyboard-layouts=it timezone=Europe/Rome" \
+    --bootappend-install "apparmor=1 security=apparmor" \
+    --compression xz \
+    --image-name "NextRedOS" \
+    "${@}"

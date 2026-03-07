@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Aspetta che i file esistano
+if [ -d "binary/boot/grub" ]; then
+    sed -i 's/Live system (amd64)/NextRedOS Live/g' binary/boot/grub/*.cfg
+    sed -i 's/Live system (amd64 fail-safe mode)/NextRedOS Live (modalita sicura)/g' binary/boot/grub/*.cfg
+    sed -i 's/Live system, kernel/NextRedOS Live, kernel/g' binary/boot/grub/*.cfg
+else
+    echo "Cartella binary/boot/grub non trovata, skip"
+fi

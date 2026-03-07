@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+# Imposta profilo MATE Terminal via dconf
+cat >> /etc/dconf/db/local.d/00-nextredos << EOF
+
+[org/mate/terminal/global]
+default-profile='nextredos'
+
+[org/mate/terminal/profiles/nextredos]
+visible-name='NextRedOS'
+background-color='#000000000000'
+foreground-color='#FFFF00000000'
+bold-color='#FFFF00000000'
+use-theme-colors=false
+palette='#000000000000:#CCCC00000000:#000000CC0000:#CCCCCCCC0000:#000000000000:#CCCC0000CCCC:#0000CCCCCCCC:#CCCCCCCCCCCC:#555555555555:#FFFF00000000:#0000FFFF0000:#FFFFFFFFFFFF:#55555555FFFF:#FFFF5555FFFF:#5555FFFFFFFF:#FFFFFFFFFFFF'
+EOF
+
+# Ricompila dconf
+dconf update

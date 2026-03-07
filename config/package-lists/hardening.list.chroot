@@ -1,0 +1,42 @@
+# Hardening base
+apparmor
+apparmor-profiles
+apparmor-profiles-extra
+apparmor-utils
+ufw
+auditd
+audispd-plugins
+macchanger
+network-manager
+network-manager-gnome
+fail2ban
+rkhunter
+chkrootkit
+lynis
+aide
+
+# Analisi rete
+nmap
+wireshark
+tcpdump
+netcat-openbsd
+traceroute
+whois
+
+# Crittografia e Privacy
+gnupg
+tor
+proxychains4
+
+# Hardening sistema
+firejail
+clamav
+clamav-daemon
+suricata
+
+# Monitoraggio
+htop
+iftop
+glances
+logwatch
+net-tools

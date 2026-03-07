@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=NextRedOS
+Description=Dark red minimal theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/NextRedOS
+ScriptFile=/usr/share/plymouth/themes/NextRedOS/NextRedOS.script

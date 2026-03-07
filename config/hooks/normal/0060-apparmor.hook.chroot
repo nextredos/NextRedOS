@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+systemctl enable apparmor
+aa-enforce /etc/apparmor.d/* 2>/dev/null || true

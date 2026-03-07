@@ -1,0 +1,13 @@
+# File grandi
+*.iso
+*.img
+chroot/
+binary/
+cache/
+build.log
+wget-log*
+
+# File temporanei
+*.tmp
+*.bak
+*~

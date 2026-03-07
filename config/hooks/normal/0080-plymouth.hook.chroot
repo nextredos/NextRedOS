@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+# Installa plymouth
+apt-get install -y plymouth plymouth-themes
+
+# Registra il tema direttamente senza copiarlo (è già in includes.chroot)
+update-alternatives --install \
+  /usr/share/plymouth/themes/default.plymouth \
+  default.plymouth \
+  /usr/share/plymouth/themes/NextRedOS/NextRedOS.plymouth 100
+
+update-alternatives --set default.plymouth \
+  /usr/share/plymouth/themes/NextRedOS/NextRedOS.plymouth
+
+# Imposta il tema attivo
+plymouth-set-default-theme -R NextRedOS
+
+# Aggiorna initramfs
+update-initramfs -u -k all
