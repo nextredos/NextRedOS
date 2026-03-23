@@ -1,3 +1,4 @@
+# Sfondo
 wallpaper_image = Image("wallpaper.png");
 screen_width = Window.GetWidth();
 screen_height = Window.GetHeight();
@@ -5,8 +6,14 @@ scaled = wallpaper_image.Scale(screen_width, screen_height);
 sprite = Sprite(scaled);
 sprite.SetPosition(0, 0, -100);
 
+# Logo piccolo in basso a destra (150px)
 logo_image = Image("logo.png");
-logo_sprite = Sprite(logo_image);
-logo_x = screen_width / 2 - logo_image.GetWidth() / 2;
-logo_y = screen_height / 2 - logo_image.GetHeight() / 2;
+logo_scaled = logo_image.Scale(150, 150 * logo_image.GetHeight() / logo_image.GetWidth());
+logo_sprite = Sprite(logo_scaled);
+logo_x = screen_width - logo_scaled.GetWidth() - 20;
+logo_y = screen_height - logo_scaled.GetHeight() - 40;
 logo_sprite.SetPosition(logo_x, logo_y, 0);
+
+# Scritta in basso a sinistra
+message_sprite = Sprite();
+message_sprite.SetPosition(20, screen_height - 40, 0);

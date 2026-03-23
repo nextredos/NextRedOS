@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+# Configura ClamAV on-access scanning
+cat >> /etc/clamav/clamd.conf << 'EOF'
+
+# On-access scanning
+OnAccessExcludeUname clamav
+EOF
+
+# Abilita servizi
+systemctl enable clamav-daemon
+systemctl enable clamav-freshclam

@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+apt-get install -y curl
+
+# Installa Goldwarden v0.3.6
+curl -fsSL "https://github.com/quexten/goldwarden/releases/download/v0.3.6/goldwarden_0.3.6_amd64.deb" -o /tmp/goldwarden.deb
+dpkg -i /tmp/goldwarden.deb || apt-get install -f -y
+rm /tmp/goldwarden.deb
+
+# Aggiungi alias
+cat >> /etc/skel/.bashrc << 'BASHEOF'
+
+# Goldwarden
+alias gw='goldwarden'
+BASHEOF

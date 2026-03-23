@@ -1,0 +1,77 @@
+#!/bin/bash
+set -e
+
+# Imposta permessi corretti sui wallpaper
+chmod 644 /usr/share/backgrounds/NextRedOS/*.png 2>/dev/null || true
+chmod 755 /usr/share/backgrounds/NextRedOS/
+
+# Crea XML per mate-appearance
+mkdir -p /usr/share/mate-background-properties
+cat > /usr/share/mate-background-properties/nextredos-wallpapers.xml << 'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>NextRedOS Default</name>
+    <filename>/usr/share/backgrounds/NextRedOS/wallpaper.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 1</name>
+    <filename>/usr/share/backgrounds/NextRedOS/1e41f70b-05ed-4419-876c-2339fd4eb472.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 2</name>
+    <filename>/usr/share/backgrounds/NextRedOS/39afefab-9631-4163-a5c0-0f9454d9b95c.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 3</name>
+    <filename>/usr/share/backgrounds/NextRedOS/3b95b778-ad22-4131-be7f-0dbb68834511.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 4</name>
+    <filename>/usr/share/backgrounds/NextRedOS/47200a58-46ba-46c0-8373-e1be47df4fab.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 5</name>
+    <filename>/usr/share/backgrounds/NextRedOS/4c0677c4-5102-4f96-857d-d4856dd9c676.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 6</name>
+    <filename>/usr/share/backgrounds/NextRedOS/502e9f07-68eb-4719-9666-0ca44532287a.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 7</name>
+    <filename>/usr/share/backgrounds/NextRedOS/87a41902-1c88-4a7e-bf9b-576f58249cdb.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 8</name>
+    <filename>/usr/share/backgrounds/NextRedOS/9e576875-4971-41fa-8ef8-4cdbb1f6f3c2.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 9</name>
+    <filename>/usr/share/backgrounds/NextRedOS/a6941670-bde1-4d05-b2fc-9135a14cbc7d.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 10</name>
+    <filename>/usr/share/backgrounds/NextRedOS/d6111c6e-e572-49c9-8fd6-eafc5e9bb044.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>NextRedOS 11</name>
+    <filename>/usr/share/backgrounds/NextRedOS/f2da542d-88eb-4ab3-b2f7-cd55527258d5.png</filename>
+    <options>zoom</options>
+  </wallpaper>
+</wallpapers>
+EOF
+
+chmod 644 /usr/share/mate-background-properties/nextredos-wallpapers.xml

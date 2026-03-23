@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+apt-get install -y curl
+
+# Installa FreeTube 0.23.13
+curl -fsSL "https://github.com/FreeTubeApp/FreeTube/releases/download/v0.23.13-beta/freetube_0.23.13_beta_amd64.deb" -o /tmp/freetube.deb
+dpkg -i /tmp/freetube.deb || apt-get install -f -y
+rm /tmp/freetube.deb

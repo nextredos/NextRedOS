@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+# Crea bookmark Jitsi per LibreWolf
+mkdir -p /etc/skel/.librewolf
+cat > /etc/skel/.librewolf/bookmarks.html << 'EOF'
+<!DOCTYPE NETSCAPE-Bookmark-file-1>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Bookmarks</TITLE>
+<H1>Bookmarks</H1>
+<DL><p>
+  <DT><H3>NextRedOS</H3>
+  <DL><p>
+    <DT><A HREF="https://meet.jit.si">Jitsi Meet — Video Conference</A>
+    <DT><A HREF="https://www.nextred.it/web/">NextRed.it</A>
+  </DL><p>
+</DL><p>
+EOF
+

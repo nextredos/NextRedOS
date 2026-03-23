@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+apt-get install -y curl
+
+# Installa Element (client Matrix)
+curl -fsSL https://packages.element.io/debian/element-io-archive-keyring.gpg -o /usr/share/keyrings/element-io-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/element-io-archive-keyring.gpg] https://packages.element.io/debian/ default main" > /etc/apt/sources.list.d/element-io.list
+apt-get update
+apt-get install -y element-desktop

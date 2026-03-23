@@ -1,12 +1,13 @@
 [org/mate/desktop/interface]
 gtk-theme='BlackMATE'
-icon-theme='Papirus-Dark'
+icon-theme='HighContrast'
 
 [org/mate/desktop/background]
 picture-filename='/usr/share/backgrounds/NextRedOS/wallpaper.png'
 picture-options='zoom'
 primary-color='#1a0000'
 color-shading-type='solid'
+sources=['/usr/share/gnome-background-properties/nextredos-wallpapers.xml']
 
 [org/mate/marco/general]
 theme='BlackMATE'

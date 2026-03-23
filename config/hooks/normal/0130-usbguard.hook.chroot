@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+# Genera policy di default — blocca tutto tranne dispositivi già connessi
+usbguard generate-policy > /etc/usbguard/rules.conf 2>/dev/null || true
+
+# USBGuard installato ma non abilitato di default
+# L'utente può abilitarlo manualmente dopo aver generato la policy
+# sudo usbguard generate-policy > /etc/usbguard/rules.conf
+# sudo systemctl enable --now usbguard
+systemctl disable usbguard 2>/dev/null || true
+
+# Aggiungi alias
+cat >> /etc/skel/.bashrc << 'BASHEOF'
+
+# USBGuard
+alias usblist='usbguard list-devices'
+alias usballow='sudo usbguard allow-device'
+alias usbblock='sudo usbguard block-device'
+BASHEOF

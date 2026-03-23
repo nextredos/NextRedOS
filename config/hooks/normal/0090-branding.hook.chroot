@@ -3,28 +3,27 @@ set -e
 
 # OS Release
 cat > /etc/os-release << EOF
-PRETTY_NAME="NextRedOS"
+PRETTY_NAME="NextRedOS 1.04 \"Ratkit\""
 NAME="NextRedOS"
-VERSION="1.0"
-VERSION_ID="1"
+VERSION="1.04"
+VERSION_CODENAME="Ratkit"
+VERSION_ID="1.04"
 ID=nextredos
 ID_LIKE=debian
-HOME_URL="https://nextred.it"
-SUPPORT_URL="https://nextred.it"
-BUG_REPORT_URL="https://nextred.it"
+HOME_URL="https://www.nextred.it/web/"
+SUPPORT_URL="https://www.nextred.it/web/"
+BUG_REPORT_URL="https://github.com/nextredos/NextRedOS/issues"
 ANSI_COLOR="1;31"
 EOF
 
 # Issue
 cat > /etc/issue << EOF
-
-NextRedOS 1.0 - Hardened Linux Distribution
+NextRedOS 1.04 "Ratkit" - Hardened Linux Distribution
 Based on Debian Trixie
-
 EOF
 
 cat > /etc/issue.net << EOF
-NextRedOS 1.0 - Hardened Linux Distribution
+NextRedOS 1.04 "Ratkit" - Hardened Linux Distribution
 EOF
 
 # Hostname
@@ -39,9 +38,13 @@ cat > /etc/motd << EOF
  | |\  |  __/>  <| |_|  _ <  __/ (_| | |_| |___) |
  |_| \_|\___/_/\_\\__|_| \_\___|\__,_|\___/|____/ 
 
- NextRedOS 1.0 - Hardened Linux Distribution
- Based on Debian Trixie
- 
- WARNING: Authorized access only!
 
+ ╔══════════════════════════════════════════════╗
+ ║   NextRedOS 1.04 "Ratkit"                   ║
+ ║   Hardened Linux Distribution               ║
+ ║   Based on Debian Trixie                    ║
+ ║   https://www.nextred.it/web/               ║
+ ╚══════════════════════════════════════════════╝
+
+ WARNING: Authorized access only!
 EOF

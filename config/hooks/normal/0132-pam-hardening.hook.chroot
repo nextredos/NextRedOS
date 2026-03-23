@@ -1,0 +1,32 @@
+#!/bin/bash
+set -e
+
+# Umask 027 — permessi restrittivi per default
+echo "umask 027" >> /etc/profile
+echo "umask 027" >> /etc/bash.bashrc
+
+# PAM — password policy restrittiva
+apt-get install -y libpam-pwquality
+
+cat > /etc/security/pwquality.conf << 'EOF'
+minlen = 12
+minclass = 3
+maxrepeat = 2
+maxclassrepeat = 4
+lcredit = -1
+ucredit = -1
+dcredit = -1
+ocredit = -1
+difok = 5
+EOF
+
+# PAM — limite tentativi login
+cat > /etc/security/faillock.conf << 'EOF'
+deny = 5
+unlock_time = 900
+fail_interval = 900
+EOF
+
+# Timeout sessione automatico dopo 15 minuti di inattività
+echo "TMOUT=900" >> /etc/profile
+echo "readonly TMOUT" >> /etc/profile

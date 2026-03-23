@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# Installa curl se non presente
+apt-get install -y curl
+
+# Installa Proton VPN
+curl -fsSL https://repo.protonvpn.com/debian/public_key.asc | gpg --dearmor -o /usr/share/keyrings/protonvpn-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/protonvpn-keyring.gpg] https://repo.protonvpn.com/debian stable main" > /etc/apt/sources.list.d/protonvpn.list
+apt-get update
+apt-get install -y proton-vpn-gnome-desktop

@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+apt-get install -y curl
+
+# Installa LibreWolf via extrepo (metodo ufficiale)
+apt-get install -y extrepo
+extrepo enable librewolf
+apt-get update
+apt-get install -y librewolf

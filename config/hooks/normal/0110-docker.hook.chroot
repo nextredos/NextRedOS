@@ -1,19 +1,33 @@
 #!/bin/bash
 set -e
 
-# Abilita Docker
-systemctl enable docker
+# Abilita servizio Podman socket
+systemctl enable podman.socket
 
-# Aggiungi utente admin al gruppo docker
-usermod -aG docker admin 2>/dev/null || true
+# Aggiungi alias Home Assistant con Podman
+cat >> /etc/skel/.bashrc << 'BASHEOF'
 
-# Aggiungi alias docker al bashrc
-cat >> /etc/skel/.bashrc << EOF
+# Podman / Home Assistant
+alias hastart='cd ~/homeassistant && podman-compose up -d'
+alias hastop='cd ~/homeassistant && podman-compose down'
+alias halogs='podman logs homeassistant'
+alias hastatus='podman ps | grep homeassistant'
+alias haupdate='cd ~/homeassistant && podman-compose pull && podman-compose up -d'
+BASHEOF
 
-# Alias Home Assistant
-alias hastart='cd ~/homeassistant && docker compose up -d'
-alias hastop='cd ~/homeassistant && docker compose down'
-alias halogs='cd ~/homeassistant && docker compose logs -f'
-alias hastatus='docker ps | grep homeassistant'
-alias haupdate='cd ~/homeassistant && docker compose pull && docker compose up -d'
+# Aggiorna docker-compose.yml per Podman
+mkdir -p /etc/skel/homeassistant
+cat > /etc/skel/homeassistant/docker-compose.yml << 'EOF'
+version: '3'
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      - ./config:/config
+    environment:
+      - TZ=UTC
+    restart: unless-stopped
+    network_mode: host
+    privileged: true
 EOF

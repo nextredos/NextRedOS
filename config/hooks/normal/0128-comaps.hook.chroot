@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# Installa Flatpak
+apt-get install -y flatpak
+
+# Aggiungi Flathub
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo 2>/dev/null || true
+
+# Installa CoMaps
+flatpak install -y flathub app.comaps.CoMaps 2>/dev/null || true

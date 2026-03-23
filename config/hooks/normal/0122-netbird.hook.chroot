@@ -1,0 +1,21 @@
+#!/bin/bash
+set -e
+apt-get install -y curl
+
+# Installa Netbird (VPN mesh tedesca, open source)
+curl -fsSL https://pkgs.netbird.io/debian/public.key | gpg --dearmor -o /usr/share/keyrings/netbird-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/netbird-keyring.gpg] https://pkgs.netbird.io/debian stable main" > /etc/apt/sources.list.d/netbird.list
+apt-get update
+apt-get install -y netbird
+
+# Abilita servizio
+systemctl enable netbird
+
+# Aggiungi alias utili al terminale
+cat >> /etc/skel/.bashrc << 'BASHEOF'
+
+# Netbird
+alias nbup='sudo netbird up'
+alias nbdown='sudo netbird down'
+alias nbstatus='netbird status'
+BASHEOF
